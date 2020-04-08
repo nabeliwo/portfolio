@@ -1,0 +1,43 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "nabeliwo's portfolio",
+  "author": "nabeliwo",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nabeliwo/portfolio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nabeliwo/portfolio/issues"
+  },
+  "homepage": "https://github.com/nabeliwo/portfolio#readme",
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --fix"
+    ]
+  },
+  "scripts": {
+    "lint:ts": "eslint 'src/**/*.ts{,x}'",
+    "lint:style": "stylelint 'src/**/*.ts{,x}'",
+    "lint": "run-p lint:*",
+    "format": "eslint --fix 'src/**/*.ts{,x}'"
+  },
+  "dependencies": {
+    "gatsby": "^2.20.13"
+  },
+  "devDependencies": {
+    "eslint": "^6.8.0",
+    "eslint-config-smarthr": "^4.0.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.0.4",
+    "stylelint": "^13.3.0",
+    "stylelint-config-prettier": "^8.0.1",
+    "stylelint-config-standard": "^20.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0",
+    "typescript": "^3.8.3"
+  }
+}
