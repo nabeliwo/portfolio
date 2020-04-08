@@ -1,0 +1,1 @@
+export { FrameEffect } from './FrameEffect'

@@ -1,5 +1,7 @@
 import React from 'react'
 
+import { App } from '../components/App/App'
+
 // Please note that you can use https://github.com/dotansimha/graphql-code-generator
 // to generate all types from graphQL schema
 // interface IndexPageProps {
@@ -12,7 +14,7 @@ import React from 'react'
 //   }
 // }
 
-const IndexPage = () => <div>hello, world</div>
+const IndexPage = () => <App>hello, world</App>
 
 export default IndexPage
 
