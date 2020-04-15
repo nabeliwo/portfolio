@@ -1,17 +1,17 @@
 {
-  "name": "portfolio",
+  "name": "homepage",
   "version": "1.0.0",
-  "description": "nabeliwo's portfolio",
+  "description": "nabeliwo's homepage",
   "author": "nabeliwo",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nabeliwo/portfolio.git"
+    "url": "git+https://github.com/nabeliwo/homepage.git"
   },
   "bugs": {
-    "url": "https://github.com/nabeliwo/portfolio/issues"
+    "url": "https://github.com/nabeliwo/homepage/issues"
   },
-  "homepage": "https://github.com/nabeliwo/portfolio#readme",
+  "homepage": "https://github.com/nabeliwo/homepage#readme",
   "lint-staged": {
     "*.{ts,tsx}": [
       "eslint --fix"
