@@ -15,7 +15,7 @@ export function renderer() {
   const rightNoiseLine = new NoiseLineRenderer()
   const bottomNoiseLine = new NoiseLineRenderer()
   const leftNoiseLine = new NoiseLineRenderer()
-  const aroundMargin = 50
+  const aroundMargin = 25 * devicePixelRatio
 
   function resize() {
     canvasWidth = innerWidth * devicePixelRatio
@@ -30,6 +30,8 @@ export function renderer() {
   }
 
   function clearCanvas() {
+    if (!ctx) return
+
     ctx.fillStyle = palette.BLACK
     ctx.fillRect(0, 0, canvasWidth, canvasHeight)
     ctx.beginPath()
@@ -41,6 +43,8 @@ export function renderer() {
   }
 
   function render() {
+    if (!ctx) return
+
     clearCanvas()
 
     const leftTop = { x: aroundMargin, y: aroundMargin }

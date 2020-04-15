@@ -18,16 +18,24 @@ const lineDirectionType = {
   vertical: 'vertical' as const,
 }
 
+const STEP_SIZE = 5 * devicePixelRatio
+const LINE_WIDTH = 1 * devicePixelRatio
+const WEAK_SHAKE_RUNOUT_WIDTH = 5 * devicePixelRatio
+const WEAK_SHAKE_FRAME_BUFFER = 10
+const STRONG_SHAKE_RUNOUT_WIDTH = 25 * devicePixelRatio
+const STRONG_SHAKE_FRAME_BUFFER = 20
+const MIN_NOISE_SIZE = 150 * devicePixelRatio
+const END_NOISE_FRAME = 25 * devicePixelRatio
+
 export class NoiseLineRenderer {
-  stepSize = 10
   nextWeakShakeFrame: number
   weakShakeFlag = false
   nextStrongShakeFrame: number
   strongShakeFlag = false
   nextNoiseFrame: number
   noiseFlag = false
-  noiseSize: number
-  noiseStartPoint: number
+  noiseSize: number = 0
+  noiseStartPoint: number = 0
 
   constructor() {
     this.nextWeakShakeFrame = this.getNextActionFrame(actionType.weakShake, 0)
@@ -38,11 +46,11 @@ export class NoiseLineRenderer {
   getNextActionFrame(type: ActionType, currentFrame: number) {
     let randomNum = 0
 
-    if (type === 'weakShake') {
+    if (type === actionType.weakShake) {
       randomNum = getRandomNum(100, 400)
-    } else if (type === 'strongShake') {
+    } else if (type === actionType.strongShake) {
       randomNum = getRandomNum(600, 1000)
-    } else if (type === 'noise') {
+    } else if (type === actionType.noise) {
       randomNum = getRandomNum(300, 600)
     }
 
@@ -55,10 +63,10 @@ export class NoiseLineRenderer {
     }
 
     const lineDirection = startPosition.x === endPosition.x ? lineDirectionType.vertical : lineDirectionType.horizontal
-    let baseLine: number
-    let noiseArray: Position[]
+    let baseLine: number = 0
+    let noiseArray: Position[] = []
 
-    ctx.lineWidth = 3
+    ctx.lineWidth = LINE_WIDTH
     ctx.strokeStyle = palette.BLUE
 
     if (lineDirection === lineDirectionType.horizontal) {
@@ -78,21 +86,21 @@ export class NoiseLineRenderer {
       const lastPosition = noiseArray[noiseArray.length - 1]
 
       if (lineDirection === lineDirectionType.horizontal) {
-        ctx.lineTo(firstPosition.x - this.stepSize, baseLine)
+        ctx.lineTo(firstPosition.x - STEP_SIZE, baseLine)
 
         noiseArray.forEach(({ x, y }) => {
           ctx.lineTo(x, y)
         })
 
-        ctx.lineTo(lastPosition.x + this.stepSize, baseLine)
+        ctx.lineTo(lastPosition.x + STEP_SIZE, baseLine)
       } else if (lineDirection === lineDirectionType.vertical) {
-        ctx.lineTo(baseLine, firstPosition.y - this.stepSize)
+        ctx.lineTo(baseLine, firstPosition.y - STEP_SIZE)
 
         noiseArray.forEach(({ x, y }) => {
           ctx.lineTo(x, y)
         })
 
-        ctx.lineTo(baseLine, lastPosition.y + this.stepSize)
+        ctx.lineTo(baseLine, lastPosition.y + STEP_SIZE)
       }
     }
 
@@ -111,12 +119,12 @@ export class NoiseLineRenderer {
     }
 
     if (this.weakShakeFlag) {
-      position = getRandomNum(position - 10, position + 10)
+      position = getRandomNum(position - WEAK_SHAKE_RUNOUT_WIDTH, position + WEAK_SHAKE_RUNOUT_WIDTH)
     }
 
-    if (frame >= this.nextWeakShakeFrame + 10) {
+    if (frame >= this.nextWeakShakeFrame + WEAK_SHAKE_FRAME_BUFFER) {
       this.weakShakeFlag = false
-      this.nextWeakShakeFrame = this.getNextActionFrame('weakShake', frame)
+      this.nextWeakShakeFrame = this.getNextActionFrame(actionType.weakShake, frame)
     }
 
     return position
@@ -128,12 +136,12 @@ export class NoiseLineRenderer {
     }
 
     if (this.strongShakeFlag) {
-      position = getRandomNum(position - 50, position + 50)
+      position = getRandomNum(position - STRONG_SHAKE_RUNOUT_WIDTH, position + STRONG_SHAKE_RUNOUT_WIDTH)
     }
 
-    if (frame >= this.nextStrongShakeFrame + 20) {
+    if (frame >= this.nextStrongShakeFrame + STRONG_SHAKE_FRAME_BUFFER) {
       this.strongShakeFlag = false
-      this.nextStrongShakeFrame = this.getNextActionFrame('strongShake', frame)
+      this.nextStrongShakeFrame = this.getNextActionFrame(actionType.strongShake, frame)
     }
 
     return position
@@ -147,37 +155,40 @@ export class NoiseLineRenderer {
     lineDirection: LineDirection,
     canvasSize: number,
   ) {
-    const endNoiseFrame = 50
     const noiseArray: Position[] = []
 
     if (frame >= this.nextNoiseFrame) {
       if (!this.noiseFlag) {
-        this.noiseSize = getRandomNum(300, canvasSize - startPoint - (canvasSize - endPoint) - this.stepSize * 2)
-        this.noiseStartPoint = getRandomNum(startPoint + this.stepSize, endPoint - this.stepSize - this.noiseSize)
+        this.noiseSize = getRandomNum(MIN_NOISE_SIZE, canvasSize - startPoint - (canvasSize - endPoint) - STEP_SIZE * 2)
+        this.noiseStartPoint = getRandomNum(startPoint + STEP_SIZE, endPoint - STEP_SIZE - this.noiseSize)
         this.noiseFlag = true
       }
     }
 
     if (this.noiseFlag) {
-      for (let i = this.noiseStartPoint; i <= this.noiseStartPoint + this.noiseSize; i += this.stepSize) {
-        const diff = (this.nextNoiseFrame + endNoiseFrame - frame) * 1.5
+      let jaggyFlag = true
+
+      for (let i = this.noiseStartPoint; i <= this.noiseStartPoint + this.noiseSize; i += STEP_SIZE) {
+        const remainFrame = this.nextNoiseFrame + END_NOISE_FRAME - frame
         let position = baseLine
 
-        if ((i / 10) % 2 === 0) {
-          position = getRandomNum(baseLine, baseLine + diff)
+        if (jaggyFlag) {
+          jaggyFlag = false
+          position = getRandomNum(baseLine, baseLine + remainFrame)
         } else {
-          position = getRandomNum(baseLine - diff, baseLine)
+          jaggyFlag = true
+          position = getRandomNum(baseLine - remainFrame, baseLine)
         }
 
-        if (lineDirection === 'horizontal') {
+        if (lineDirection === lineDirectionType.horizontal) {
           noiseArray.push({ x: i, y: position })
-        } else if (lineDirection === 'vertical') {
+        } else if (lineDirection === lineDirectionType.vertical) {
           noiseArray.push({ x: position, y: i })
         }
       }
     }
 
-    if (frame >= this.nextNoiseFrame + endNoiseFrame) {
+    if (frame >= this.nextNoiseFrame + END_NOISE_FRAME) {
       this.noiseFlag = false
       this.nextNoiseFrame = this.getNextActionFrame('noise', frame)
     }
