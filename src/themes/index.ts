@@ -1,2 +1,2 @@
 export { palette } from './palette'
-export { mediaQuery, space } from './size'
+export { mediaQuery, space, font } from './size'

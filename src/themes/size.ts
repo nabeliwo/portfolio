@@ -10,3 +10,8 @@ export const mediaQuery = {
 export const space = {
   m: 25,
 }
+
+export const font = {
+  s: '1.6rem',
+  m: '1.8rem',
+}
