@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { FC } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
 
@@ -7,7 +7,7 @@ import { palette } from '../../themes'
 import { Layout } from '../Layout/Layout'
 import { FrameEffect } from '../FrameEffect'
 
-export const App = ({ children }) => (
+export const App: FC = ({ children }) => (
   <>
     <GlobalStyle />
     <Layout>{children}</Layout>
