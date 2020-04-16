@@ -1,7 +1,9 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { FC } from 'react'
+import styled, { css } from 'styled-components'
 
-export const Layout = ({ children }) => (
+import { mediaQuery } from '../../themes'
+
+export const Layout: FC = ({ children }) => (
   <Wrapper>
     <Box>{children}</Box>
   </Wrapper>
@@ -13,6 +15,10 @@ const Wrapper = styled.div`
   height: 100vh;
   padding: 25px;
   box-sizing: border-box;
+
+  ${mediaQuery.spStyle(css`
+    padding: 10px;
+  `)}
 `
 const Box = styled.div`
   display: flex;
@@ -20,4 +26,8 @@ const Box = styled.div`
   height: 100%;
   padding: 25px;
   box-sizing: border-box;
+
+  ${mediaQuery.spStyle(css`
+    padding: 10px;
+  `)}
 `
