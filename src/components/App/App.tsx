@@ -4,11 +4,13 @@ import reset from 'styled-reset'
 
 import { palette } from '../../themes'
 
+import { Head, Props as HeadProps } from '../Head/Head'
 import { Layout } from '../Layout/Layout'
 import { FrameEffect } from '../FrameEffect'
 
-export const App: FC = ({ children }) => (
+export const App: FC<HeadProps> = ({ children, ...headProps }) => (
   <>
+    <Head {...headProps} />
     <GlobalStyle />
     <Layout>{children}</Layout>
     <FrameEffect />
@@ -20,7 +22,7 @@ const GlobalStyle = createGlobalStyle`
 
   @font-face {
     font-family: 'PixelMplus10-Regular';
-    src: url(../font/PixelMplus10-Regular.ttf) format("truetype");
+    src: url('/font/PixelMplus10-Regular.otf') format('opentype');
   }
 
   html {

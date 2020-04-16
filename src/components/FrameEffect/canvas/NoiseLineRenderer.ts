@@ -1,4 +1,4 @@
-import { palette } from '../../../themes'
+import { palette, space } from '../../../themes'
 import { getRandomNum } from './lib'
 
 type ActionType = 'weakShake' | 'strongShake' | 'noise'
@@ -23,10 +23,10 @@ const STEP_SIZE = 5 * dpr
 const LINE_WIDTH = 1 * dpr
 const WEAK_SHAKE_RUNOUT_WIDTH = 5 * dpr
 const WEAK_SHAKE_FRAME_BUFFER = 10
-const STRONG_SHAKE_RUNOUT_WIDTH = 25 * dpr
+const STRONG_SHAKE_RUNOUT_WIDTH = space.m * dpr
 const STRONG_SHAKE_FRAME_BUFFER = 20
 const MIN_NOISE_SIZE = 150 * dpr
-const END_NOISE_FRAME = 25 * dpr
+const END_NOISE_FRAME = space.m * dpr
 
 export class NoiseLineRenderer {
   nextWeakShakeFrame: number

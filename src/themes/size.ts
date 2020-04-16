@@ -6,3 +6,7 @@ export const mediaQuery = {
   isPc: () => innerWidth >= pcMinWidth,
   spStyle: (style: FlattenSimpleInterpolation) => `@media screen and (max-width: ${pcMinWidth}px) {${style}}`,
 }
+
+export const space = {
+  m: 25,
+}

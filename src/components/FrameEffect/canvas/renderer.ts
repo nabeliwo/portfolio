@@ -1,4 +1,4 @@
-import { mediaQuery, palette } from '../../../themes'
+import { mediaQuery, palette, space } from '../../../themes'
 import { NoiseLineRenderer } from './NoiseLineRenderer'
 
 const MAX_FRAME = 100000
@@ -22,7 +22,7 @@ export function renderer() {
     canvasHeight = innerHeight * devicePixelRatio
     canvas.width = canvasWidth
     canvas.height = canvasHeight
-    aroundMargin = (mediaQuery.isPc() ? 25 : 10) * devicePixelRatio
+    aroundMargin = (mediaQuery.isPc() ? space.m : 10) * devicePixelRatio
   }
 
   function tick() {
