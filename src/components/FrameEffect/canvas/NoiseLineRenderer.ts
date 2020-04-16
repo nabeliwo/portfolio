@@ -18,14 +18,15 @@ const lineDirectionType = {
   vertical: 'vertical' as const,
 }
 
-const STEP_SIZE = 5 * devicePixelRatio
-const LINE_WIDTH = 1 * devicePixelRatio
-const WEAK_SHAKE_RUNOUT_WIDTH = 5 * devicePixelRatio
+const dpr = typeof window !== 'undefined' ? devicePixelRatio : 1
+const STEP_SIZE = 5 * dpr
+const LINE_WIDTH = 1 * dpr
+const WEAK_SHAKE_RUNOUT_WIDTH = 5 * dpr
 const WEAK_SHAKE_FRAME_BUFFER = 10
-const STRONG_SHAKE_RUNOUT_WIDTH = 25 * devicePixelRatio
+const STRONG_SHAKE_RUNOUT_WIDTH = 25 * dpr
 const STRONG_SHAKE_FRAME_BUFFER = 20
-const MIN_NOISE_SIZE = 150 * devicePixelRatio
-const END_NOISE_FRAME = 25 * devicePixelRatio
+const MIN_NOISE_SIZE = 150 * dpr
+const END_NOISE_FRAME = 25 * dpr
 
 export class NoiseLineRenderer {
   nextWeakShakeFrame: number
