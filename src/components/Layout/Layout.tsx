@@ -15,7 +15,6 @@ const Wrapper = styled.div`
   height: 100vh;
   padding: 25px;
   box-sizing: border-box;
-
   ${mediaQuery.spStyle(css`
     padding: 10px;
   `)}
@@ -26,7 +25,6 @@ const Box = styled.div`
   height: 100%;
   padding: 25px;
   box-sizing: border-box;
-
   ${mediaQuery.spStyle(css`
     padding: 10px;
   `)}
