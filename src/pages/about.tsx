@@ -6,8 +6,8 @@ import { Head } from '../components/Head'
 
 const AboutPage = () => (
   <>
-    <Head title="アバウト" description="nabeliwo やこのサイトについて" slug={path.about} />
-    <p>hello, world</p>
+    <Head title="アバウト" description="nabeliwo.com や nabeliwo 自身について" slug={path.about} />
+    <p>アバウトページ</p>
   </>
 )
 

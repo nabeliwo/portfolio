@@ -5,7 +5,7 @@ import { Head } from '../components/Head'
 const IndexPage = () => (
   <>
     <Head />
-    <p>hello, world</p>
+    <p>トップページ</p>
   </>
 )
 

@@ -25,7 +25,6 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     height: 100%;
-    font-size: 62.5%;
   }
   body {
     height: 100%;
@@ -48,5 +47,13 @@ const GlobalStyle = createGlobalStyle`
     border: none;
     background-color: inherit;
     color: inherit;
+  }
+  ::-webkit-scrollbar {
+    width: 15px;
+    height: 15px;
+    border: 1px solid ${palette.BLUE};
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: ${palette.BLUE};
   }
 `

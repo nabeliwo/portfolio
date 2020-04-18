@@ -53,5 +53,5 @@ const Main = styled.main`
   flex-direction: column;
   flex: 1;
   /* 40px === SiteTitle height */
-  height: calc(100vh - ${space.m} - ${space.m} - 40px - ${space.m} - ${space.m});
+  height: calc(100vh - ${space.m}px - ${space.m}px - 40px - ${space.m}px - ${space.m}px);
 `

@@ -42,7 +42,7 @@ const Item = styled(Link)`
   width: 200px;
   padding: 10px;
   color: ${palette.BLUE};
-  font-size: ${font.s};
+  font-size: ${font.s}px;
   text-decoration: none;
 
   &::before {

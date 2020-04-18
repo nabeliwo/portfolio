@@ -1,1 +1,1 @@
-export { Head, Props } from './Head'
+export { Head } from './Head'

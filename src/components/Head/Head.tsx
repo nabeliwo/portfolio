@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { StaticQuery, graphql } from 'gatsby'
 import { Helmet } from 'react-helmet'
 
-export type Props = {
+type Props = {
   title?: string
   description?: string
   slug?: string
