@@ -4,13 +4,11 @@ import reset from 'styled-reset'
 
 import { palette } from '../../themes'
 
-import { Head, Props as HeadProps } from '../Head/Head'
-import { Layout } from '../Layout/Layout'
+import { Layout } from '../Layout'
 import { FrameEffect } from '../FrameEffect'
 
-export const App: FC<HeadProps> = ({ children, ...headProps }) => (
+export const App: FC = ({ children }) => (
   <>
-    <Head {...headProps} />
     <GlobalStyle />
     <Layout>{children}</Layout>
     <FrameEffect />

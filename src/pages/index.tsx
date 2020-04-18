@@ -1,38 +1,12 @@
 import React from 'react'
 
-import { App } from '../components/App/App'
+import { Head } from '../components/Head'
 
-// Please note that you can use https://github.com/dotansimha/graphql-code-generator
-// to generate all types from graphQL schema
-// interface IndexPageProps {
-//   data: {
-//     site: {
-//       siteMetadata: {
-//         title: string
-//       }
-//     }
-//   }
-// }
-
-const IndexPage = () => <App>hello, world</App>
+const IndexPage = () => (
+  <>
+    <Head />
+    <p>hello, world</p>
+  </>
+)
 
 export default IndexPage
-
-// export default class extends React.Component<IndexPageProps, {}> {
-//   constructor(props: IndexPageProps, context: any) {
-//     super(props, context)
-//   }
-//   public render() {
-//     return (
-//       <div>
-//         <h1>Hi people</h1>
-//         <p>
-//           Welcome to your new{' '}
-//           <strong>{this.props.data.site.siteMetadata.title}</strong> site.
-//         </p>
-//         <p>Now go build something great.</p>
-//         <Link to="/page-2/">Go to page 2</Link>
-//       </div>
-//     )
-//   }
-// }

@@ -1,15 +1,15 @@
-import React, { useEffect } from 'react'
+import React, { FC, memo, useEffect } from 'react'
 import styled from 'styled-components'
 
 import { renderer } from './canvas/renderer'
 
-export const FrameEffect = () => {
+export const FrameEffect: FC<{ renderFlag?: boolean }> = memo(({ renderFlag = true }) => {
   useEffect(() => {
-    renderer()
-  }, [])
+    if (renderFlag) renderer()
+  }, [renderFlag])
 
   return <Canvas id="frame-effect" />
-}
+})
 
 const Canvas = styled.canvas`
   position: absolute;

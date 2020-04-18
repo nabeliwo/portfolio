@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: 'nabeliwo.com',
-    description: 'nabeliwo の全てがわかるサイト',
+    description: 'nabeliwo の人生がわかるサイト',
     author: 'nabeliwo',
     siteUrl: 'https://nabeliwo.com',
     image: 'https://nabeliwo.com/images/logo.png',

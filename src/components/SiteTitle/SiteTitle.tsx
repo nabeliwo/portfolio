@@ -1,45 +1,50 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { StaticQuery, graphql } from 'gatsby'
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
 
 import { palette, space } from '../../themes'
 
-export const SiteTitle = () => {
-  const CURSOR_FLASH_TIME = 800
-  const [cursorVisible, setCursorVisible] = useState(true)
-
-  useEffect(() => {
-    setInterval(() => {
-      setCursorVisible((state) => !state)
-    }, CURSOR_FLASH_TIME)
-  }, [])
-
-  return (
-    <StaticQuery
-      query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
-            }
+export const SiteTitle = () => (
+  <StaticQuery
+    query={graphql`
+      query SiteTitleQuery {
+        site {
+          siteMetadata {
+            title
           }
         }
-      `}
-      render={(data) => {
-        const { title } = data.site.siteMetadata
+      }
+    `}
+    render={(data) => {
+      const { title } = data.site.siteMetadata
 
-        return (
-          <Wrapper>
-            <Title>{title}</Title>
-            <Cursor className={cursorVisible ? 'active' : ''} />
-          </Wrapper>
-        )
-      }}
-    />
-  )
-}
+      return (
+        <Wrapper>
+          <Title>{title}</Title>
+          <Cursor />
+        </Wrapper>
+      )
+    }}
+  />
+)
 
 const FONT_SIZE = 40
+const CURSOR_FLASH_TIME = 1.6
+const flash = keyframes`
+  0% {
+    opacity: 0;
+  }
+  49% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1
+  }
+  100% {
+    opacity: 1;
+  }
+`
+
 const Wrapper = styled.h1`
   display: flex;
   align-items: center;
@@ -51,14 +56,10 @@ const Title = styled.p`
   letter-spacing: 5px;
 `
 const Cursor = styled.span`
-  visibility: hidden;
   display: inline-block;
   width: 4px;
   height: ${FONT_SIZE}px;
   margin-left: 5px;
   background-color: ${palette.BLUE};
-
-  &.active {
-    visibility: visible;
-  }
+  animation: ${flash} ${CURSOR_FLASH_TIME}s infinite;
 `
