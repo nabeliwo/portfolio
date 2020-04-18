@@ -9,6 +9,7 @@ type Props = {
   categories?: Array<{
     title: string
     path: string
+    exact?: boolean
   }>
 }
 
@@ -21,13 +22,20 @@ export const MainLayout: FC<Props> = ({ title, categories = [], children }) => {
 
       {categories.length > 0 && (
         <Categories>
-          {categories.map((category) => (
-            <li key={category.path}>
-              <Item to={category.path} className={pathname === category.path ? 'active' : ''}>
-                {category.title}
-              </Item>
-            </li>
-          ))}
+          {categories.map((category) => {
+            const activeClass =
+              (category.exact && pathname === category.path) || (!category.exact && pathname.indexOf(category.path) !== -1)
+                ? 'active'
+                : ''
+
+            return (
+              <li key={category.path}>
+                <Item to={category.path} className={activeClass}>
+                  {category.title}
+                </Item>
+              </li>
+            )
+          })}
         </Categories>
       )}
 
@@ -77,11 +85,24 @@ const Content = styled.div`
   font-size: ${font.m}px;
   line-height: 1.8;
 
-  > p {
+  h2 {
+    margin-bottom: ${space.s}px;
+    font-size: ${font.xl}px;
+  }
+
+  p {
     margin-bottom: ${space.s}px;
 
     &:last-child {
       margin-bottom: 0;
+    }
+  }
+
+  a {
+    text-decoration: underline;
+
+    &:hover {
+      text-decoration: none;
     }
   }
 `

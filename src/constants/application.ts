@@ -14,6 +14,7 @@ export const categories = {
     {
       title: 'トップ',
       path: path.life,
+      exact: true,
     },
     {
       title: '健康',
