@@ -1,6 +1,7 @@
 import React, { FC } from 'react'
 import { createGlobalStyle } from 'styled-components'
 import reset from 'styled-reset'
+import { VFXProvider } from 'react-vfx'
 
 import { palette } from '../../themes'
 
@@ -8,11 +9,11 @@ import { Layout } from '../Layout'
 import { FrameEffect } from '../FrameEffect'
 
 export const App: FC = ({ children }) => (
-  <>
+  <VFXProvider>
     <GlobalStyle />
     <Layout>{children}</Layout>
     <FrameEffect />
-  </>
+  </VFXProvider>
 )
 
 const GlobalStyle = createGlobalStyle`

@@ -9438,6 +9438,13 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
+react-vfx@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-vfx/-/react-vfx-0.1.4.tgz#15a506be791cc548027326905da177dce3d85b7c"
+  integrity sha512-jCVmqRxNzpuBWrPd12eejbD2treFvZwrtADCUqQfznztUKl72cnl7zHif43B3DPnqZY4Xra0+rCAIrL9xVO4tQ==
+  dependencies:
+    three "^0.111.0"
+
 react@^16.13.1, react@^16.8.0:
   version "16.13.1"
   resolved "https://registry.yarnpkg.com/react/-/react-16.13.1.tgz#2e818822f1a9743122c063d6410d85c1e3afe48e"
@@ -11121,6 +11128,11 @@ text-table@0.2.0, text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+three@^0.111.0:
+  version "0.111.0"
+  resolved "https://registry.yarnpkg.com/three/-/three-0.111.0.tgz#9cedb73e79b7f6bf2440cb67a273f883faa923b6"
+  integrity sha512-AcTqyGJ3H75AIusOuADy0LsP958QKQwm/YhABHFMzd6RFXPNVay1rlSbbG6WYv7KM72G2THMMwqbjQd4dVHMkQ==
 
 through2@^2.0.0, through2@^2.0.1:
   version "2.0.5"

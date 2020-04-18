@@ -6,7 +6,7 @@ import { path } from '../../constants/application'
 import { font, palette } from '../../themes'
 
 export const Navigation = () => {
-  const pathname = location.pathname
+  const pathname = typeof window !== 'undefined' ? location.pathname : ''
 
   return (
     <Wrapper>
@@ -15,15 +15,23 @@ export const Navigation = () => {
           <Item to={path.root} className={pathname === path.root ? 'active' : ''}>
             トップ
           </Item>
+        </li>
+        <li>
           <Item to={path.about} className={pathname.indexOf(path.about) !== -1 ? 'active' : ''}>
             アバウト
           </Item>
+        </li>
+        <li>
           <Item to={path.life} className={pathname.indexOf(path.life) !== -1 ? 'active' : ''}>
             生活
           </Item>
+        </li>
+        <li>
           <Item to={path.hobby} className={pathname.indexOf(path.hobby) !== -1 ? 'active' : ''}>
             趣味
           </Item>
+        </li>
+        <li>
           <Item to={path.link} className={pathname.indexOf(path.link) !== -1 ? 'active' : ''}>
             リンク集
           </Item>

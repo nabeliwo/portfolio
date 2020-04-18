@@ -12,25 +12,29 @@ type Props = {
   }>
 }
 
-export const MainLayout: FC<Props> = ({ title, categories = [], children }) => (
-  <>
-    <Title>{title}</Title>
+export const MainLayout: FC<Props> = ({ title, categories = [], children }) => {
+  const pathname = typeof window !== 'undefined' ? location.pathname : ''
 
-    {categories.length > 0 && (
-      <Categories>
-        {categories.map((category) => (
-          <li key={category.path}>
-            <Item to={category.path} className={location.pathname === category.path ? 'active' : ''}>
-              {category.title}
-            </Item>
-          </li>
-        ))}
-      </Categories>
-    )}
+  return (
+    <>
+      <Title>{title}</Title>
 
-    <Content>{children}</Content>
-  </>
-)
+      {categories.length > 0 && (
+        <Categories>
+          {categories.map((category) => (
+            <li key={category.path}>
+              <Item to={category.path} className={pathname === category.path ? 'active' : ''}>
+                {category.title}
+              </Item>
+            </li>
+          ))}
+        </Categories>
+      )}
+
+      <Content>{children}</Content>
+    </>
+  )
+}
 
 const Title = styled.h2`
   margin-bottom: ${space.s}px;
@@ -72,4 +76,12 @@ const Content = styled.div`
   padding-bottom: ${space.m}px;
   font-size: ${font.m}px;
   line-height: 1.8;
+
+  > p {
+    margin-bottom: ${space.s}px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
 `
