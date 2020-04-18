@@ -11,7 +11,13 @@ export const path = {
   link: '/link',
 }
 
-export const categories = {
+export const categories: {
+  [key: string]: Array<{
+    title: string
+    path: string
+    exact?: boolean
+  }>
+} = {
   about: [
     {
       title: 'トップ',
