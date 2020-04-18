@@ -1,6 +1,8 @@
 export const path = {
   root: '/',
   about: '/about',
+  aboutMe: '/about/me',
+  aboutSite: '/about/site',
   life: '/life',
   lifeHealth: '/life/health',
   lifeBeauty: '/life/beauty',
@@ -10,6 +12,21 @@ export const path = {
 }
 
 export const categories = {
+  about: [
+    {
+      title: 'トップ',
+      path: path.about,
+      exact: true,
+    },
+    {
+      title: 'nabeliwo について',
+      path: path.aboutMe,
+    },
+    {
+      title: 'このサイトについて',
+      path: path.aboutSite,
+    },
+  ],
   life: [
     {
       title: 'トップ',
