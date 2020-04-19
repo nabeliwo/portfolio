@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { createGlobalStyle, css } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 import reset from 'styled-reset'
 
 import { mediaQuery, palette } from '../../themes'
@@ -10,7 +10,9 @@ import { FrameEffect } from '../FrameEffect'
 export const App: FC = ({ children }) => (
   <>
     <GlobalStyle />
-    <Layout>{children}</Layout>
+    <Container>
+      <Layout>{children}</Layout>
+    </Container>
     <FrameEffect />
   </>
 )
@@ -24,10 +26,10 @@ const GlobalStyle = createGlobalStyle`
   }
 
   html {
-    height: 100%;
+    min-height: 100%;
   }
   body {
-    height: 100%;
+    min-height: 100%;
     background-color: ${palette.BLACK};
     color: ${palette.BLUE};
     font-family: 'PixelMplus10-Regular', system-ui, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', 'ヒラギノ角ゴ ProN W3', Meiryo, 'メイリオ', sans-serif;
@@ -58,4 +60,8 @@ const GlobalStyle = createGlobalStyle`
       background-color: ${palette.BLUE};
     }
   `)}
+`
+const Container = styled.div`
+  z-index: 10;
+  position: relative;
 `

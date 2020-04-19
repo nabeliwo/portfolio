@@ -29,7 +29,10 @@ export const MainLayout: FC<Props> = ({ title, description, category, slug, html
         <Categories>
           {categoryPaths.map((item) => {
             const activeClass =
-              (item.exact && pathname === item.path) || (!item.exact && pathname.indexOf(item.path) !== -1) ? 'active' : ''
+              (item.exact && (pathname === item.path || pathname === `${item.path}/`)) ||
+              (!item.exact && pathname.indexOf(item.path) !== -1)
+                ? 'active'
+                : ''
 
             return (
               <li key={item.path}>

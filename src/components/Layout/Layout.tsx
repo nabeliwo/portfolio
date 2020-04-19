@@ -301,8 +301,6 @@ const blink = keyframes`
 `
 
 const Wrapper = styled.div`
-  z-index: 10;
-  position: relative;
   height: 100vh;
   padding: ${space.m}px;
   box-sizing: border-box;

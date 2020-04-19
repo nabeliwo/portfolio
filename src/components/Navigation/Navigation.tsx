@@ -12,7 +12,7 @@ export const Navigation = () => {
     <Wrapper>
       <ul>
         <li>
-          <Item to={path.root} className={pathname === path.root ? 'active' : ''}>
+          <Item to={path.root} className={pathname === path.root || pathname === '' ? 'active' : ''}>
             トップ
           </Item>
         </li>
