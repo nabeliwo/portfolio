@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'gatsby'
 
 import { path } from '../../constants/application'
-import { font, palette } from '../../themes'
+import { font, palette, space } from '../../themes'
 
 export const Navigation = () => {
   const pathname = typeof window !== 'undefined' ? location.pathname : ''
@@ -48,7 +48,7 @@ const Wrapper = styled.nav`
 const Item = styled(Link)`
   display: flex;
   width: 200px;
-  padding: 10px;
+  padding: ${space.xs}px;
   color: ${palette.BLUE};
   font-size: ${font.s}px;
   text-decoration: none;
@@ -57,7 +57,7 @@ const Item = styled(Link)`
     display: inline-block;
     width: 16px;
     height: 16px;
-    margin-right: 10px;
+    margin-right: ${space.xs}px;
     background-color: ${palette.BLUE};
     content: '';
   }

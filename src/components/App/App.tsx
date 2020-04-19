@@ -1,8 +1,8 @@
 import React, { FC } from 'react'
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle, css } from 'styled-components'
 import reset from 'styled-reset'
 
-import { palette } from '../../themes'
+import { mediaQuery, palette } from '../../themes'
 
 import { Layout } from '../Layout'
 import { FrameEffect } from '../FrameEffect'
@@ -48,12 +48,14 @@ const GlobalStyle = createGlobalStyle`
     background-color: inherit;
     color: inherit;
   }
-  ::-webkit-scrollbar {
-    width: 15px;
-    height: 15px;
-    border: 1px solid ${palette.BLUE};
-  }
-  ::-webkit-scrollbar-thumb {
-    background-color: ${palette.BLUE};
-  }
+  ${mediaQuery.pcStyle(css`
+    ::-webkit-scrollbar {
+      width: 15px;
+      height: 15px;
+      border: 1px solid ${palette.BLUE};
+    }
+    ::-webkit-scrollbar-thumb {
+      background-color: ${palette.BLUE};
+    }
+  `)}
 `

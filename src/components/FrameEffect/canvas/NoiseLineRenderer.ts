@@ -1,5 +1,5 @@
 import { palette, space } from '../../../themes'
-import { getRandomNum } from './lib'
+import { getRandomNum } from '../../../libs/getRandomNum'
 
 type ActionType = 'weakShake' | 'strongShake' | 'noise'
 type Position = {

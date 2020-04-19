@@ -25,11 +25,11 @@ export const categories: {
       exact: true,
     },
     {
-      title: 'nabeliwo について',
+      title: 'nabeliwo',
       path: path.aboutMe,
     },
     {
-      title: 'このサイトについて',
+      title: 'サイト',
       path: path.aboutSite,
     },
   ],

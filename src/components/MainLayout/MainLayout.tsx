@@ -1,9 +1,9 @@
 import React, { FC } from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 import { categories } from '../../constants/application'
-import { font, palette, space } from '../../themes'
+import { font, mediaQuery, palette, space } from '../../themes'
 
 import { Head } from '../Head'
 
@@ -51,26 +51,43 @@ const Title = styled.h2`
   margin-bottom: ${space.s}px;
   font-size: 26px;
   line-height: 1;
+
+  ${mediaQuery.spStyle(css`
+    font-size: ${font.l}px;
+  `)}
 `
 const Categories = styled.ul`
   display: flex;
   align-items: center;
   margin-bottom: ${space.s}px;
-  padding-left: 10px;
+  padding-left: ${space.xs}px;
 
   &::before {
-    margin-right: 10px;
+    margin-right: ${space.xs}px;
     font-size: ${font.l}px;
     content: '＞';
   }
 
   > li:not(:first-child) {
-    margin-left: 10px;
+    margin-left: ${space.xs}px;
   }
+
+  ${mediaQuery.spStyle(css`
+    padding-left: 0;
+
+    &::before {
+      margin-right: 5px;
+      font-size: ${font.xs}px;
+    }
+
+    > li:not(:first-child) {
+      margin-left: 5px;
+    }
+  `)}
 `
 const Item = styled(Link)`
   display: block;
-  padding: 8px 10px;
+  padding: 8px ${space.xs}px;
   color: ${palette.BLUE};
   font-size: ${font.l}px;
   text-decoration: none;
@@ -80,6 +97,11 @@ const Item = styled(Link)`
     background-color: ${palette.BLUE};
     color: ${palette.BLACK};
   }
+
+  ${mediaQuery.spStyle(css`
+    padding: 4px 5px;
+    font-size: ${font.xs}px;
+  `)}
 `
 const Content = styled.div`
   overflow-y: scroll;
@@ -118,6 +140,10 @@ const Content = styled.div`
     padding-left: 1.5em;
 
     ul {
+      margin-bottom: 0;
+    }
+
+    &:last-child {
       margin-bottom: 0;
     }
   }

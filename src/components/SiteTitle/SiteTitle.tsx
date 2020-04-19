@@ -1,8 +1,9 @@
 import React from 'react'
-import { StaticQuery, graphql } from 'gatsby'
-import styled, { keyframes } from 'styled-components'
+import { Link, StaticQuery, graphql } from 'gatsby'
+import styled, { css, keyframes } from 'styled-components'
 
-import { palette, space } from '../../themes'
+import { path } from '../../constants/application'
+import { mediaQuery, palette } from '../../themes'
 
 export const SiteTitle = () => (
   <StaticQuery
@@ -19,16 +20,19 @@ export const SiteTitle = () => (
       const { title } = data.site.siteMetadata
 
       return (
-        <Wrapper>
-          <Title>{title}</Title>
-          <Cursor />
-        </Wrapper>
+        <h1>
+          <Wrapper to={path.root}>
+            <Title>{title}</Title>
+            <Cursor />
+          </Wrapper>
+        </h1>
       )
     }}
   />
 )
 
-const FONT_SIZE = 40
+const PC_FONT_SIZE = 40
+const SP_FONT_SIZE = 30
 const CURSOR_FLASH_TIME = 1.6
 const flash = keyframes`
   0% {
@@ -45,21 +49,26 @@ const flash = keyframes`
   }
 `
 
-const Wrapper = styled.h1`
+const Wrapper = styled(Link)`
   display: flex;
   align-items: center;
-  margin-bottom: ${space.m}px;
 `
 const Title = styled.p`
-  font-size: ${FONT_SIZE}px;
+  font-size: ${PC_FONT_SIZE}px;
   line-height: 1;
   letter-spacing: 5px;
+  ${mediaQuery.spStyle(css`
+    font-size: ${SP_FONT_SIZE}px;
+  `)}
 `
 const Cursor = styled.span`
   display: inline-block;
   width: 4px;
-  height: ${FONT_SIZE}px;
+  height: ${PC_FONT_SIZE}px;
   margin-left: 5px;
   background-color: ${palette.BLUE};
   animation: ${flash} ${CURSOR_FLASH_TIME}s infinite;
+  ${mediaQuery.spStyle(css`
+    height: ${SP_FONT_SIZE}px;
+  `)}
 `

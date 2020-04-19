@@ -1,12 +1,14 @@
-import React, { FC, memo, useEffect } from 'react'
-import styled from 'styled-components'
+import React, { memo, useEffect } from 'react'
+import styled, { css } from 'styled-components'
+
+import { mediaQuery } from '../../themes'
 
 import { renderer } from './canvas/renderer'
 
-export const FrameEffect: FC<{ renderFlag?: boolean }> = memo(({ renderFlag = true }) => {
+export const FrameEffect = memo(() => {
   useEffect(() => {
-    if (renderFlag) renderer()
-  }, [renderFlag])
+    renderer()
+  }, [])
 
   return <Canvas id="frame-effect" />
 })
@@ -17,4 +19,7 @@ const Canvas = styled.canvas`
   left: 0;
   width: 100%;
   height: 100%;
+  ${mediaQuery.spStyle(css`
+    position: fixed;
+  `)}
 `
