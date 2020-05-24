@@ -9789,10 +9789,10 @@ react-side-effect@^1.1.0:
   dependencies:
     shallowequal "^1.0.1"
 
-react-vfx@^0.1.4:
-  version "0.1.4"
-  resolved "https://registry.yarnpkg.com/react-vfx/-/react-vfx-0.1.4.tgz#15a506be791cc548027326905da177dce3d85b7c"
-  integrity sha512-jCVmqRxNzpuBWrPd12eejbD2treFvZwrtADCUqQfznztUKl72cnl7zHif43B3DPnqZY4Xra0+rCAIrL9xVO4tQ==
+react-vfx@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/react-vfx/-/react-vfx-0.2.0.tgz#70defd61d8c52d795a9cb06f5cd0a381adfd53c7"
+  integrity sha512-awkZUdC9qUFvB3zRt/jSGFIztHnApHGo187f5WSYXCh72wJh2IJm+jh4fIPgRcK6s4ggVjFmkMP2yqcU77L7KQ==
   dependencies:
     three "^0.111.0"
 
