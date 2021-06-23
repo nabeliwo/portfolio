@@ -5,6 +5,6 @@
 
 This repogitory is old project. move to https://github.com/nabeliwo/portal.
 
-[nabeliwo](https://twitter.com/nabeliwo)'s homepage.
+[nabeliwo](https://twitter.com/nabeliwo)'s portal site.
 
 https://nabeliwo.com
